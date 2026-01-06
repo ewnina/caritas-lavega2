@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cáritas La Vega - Dignidad, Desarrollo y Justicia Social</title>
+    <meta name="description" content="Cáritas Diocesana La Vega - Trabajando por el desarrollo humano integral y la justicia social desde 1969">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-red: #dc2626;
+            --light-blue: #3b82f6;
+            --gold: #f59e0b;
+            --dark-gray: #1f2937;
+            --light-gray: #f3f4f6;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .tagline {
+            font-size: 0.85rem;
+            opacity: 0.95;
+            max-width: 200px;
+        }
+
+        .header-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary-red);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #b91c1c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--light-gray);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(59, 130, 246, 0.9) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%231e3a8a" width="1200" height="600"/><path fill="%233b82f6" opacity="0.1" d="M0,200 Q300,100 600,200 T1200,200 L1200,600 L0,600 Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 4rem 1.5rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Mission Section */
+        .mission {
+            padding: 4rem 1.5rem;
+            background: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #6b7280;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mission-card {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .mission-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .mission-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 4rem 1.5rem;
+            background: var(--light-gray);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-red);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transform: translateX(5px);
+        }
+
+        .service-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .service-card p {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        /* Impact Section */
+        .impact {
+            padding: 4rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+            color: var(--white);
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+
+        .impact-item {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .impact-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-text {
+            font-size: 1rem;
+        }
+
+        /* Contact Form Section */
+        .contact {
+            padding: 4rem 1.5rem;
+            background: var(--white);
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item-icon {
+            font-size: 1.5rem;
+            color: var(--primary-red);
+            min-width: 30px;
+        }
+
+        .contact-form {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-gray);
+            color: var(--white);
+            padding: 3rem 1.5rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: var(--white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.5);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .header-content {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .logo-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <a href="#" class="logo">✝ Cáritas La Vega</a>
+                <p class="tagline">Dignidad, Desarrollo y Justicia Social</p>
+            </div>
+            <div class="header-cta">
+                <a href="#contacto" class="btn btn-primary">Contáctanos</a>
+                <a href="#donar" class="btn btn-secondary">Cómo Ayudar</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero fade-in-up">
+        <div class="hero-content">
+            <h1>Construyendo Esperanza desde 1969</h1>
+            <p>Trabajamos por el desarrollo humano integral y la justicia social en La Vega, Monseñor Nouel, Hermanas Mirabal y Sánchez Ramírez</p>
+            <div class="hero-cta">
+                <a href="#servicios" class="btn btn-primary">Nuestros Servicios</a>
+                <a href="#contacto" class="btn btn-secondary">Solicitar Ayuda</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <div class="stat-number">55+</div>
+                    <div class="stat-label">Años de Servicio</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Provincias</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">61</div>
+                    <div class="stat-label">Parroquias</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">385+</div>
+                    <div class="stat-label">Comunidades</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission" id="mision">
+        <h2 class="section-title">Nuestra Misión</h2>
+        <p class="section-subtitle">Organismo de la Iglesia Católica comprometido con la práctica de la caridad y la solidaridad a la luz del Evangelio</p>
+        <div class="mission-grid">
+            <div class="mission-card">
+                <div class="mission-icon">🤝</div>
+                <h3>Caridad y Solidaridad</h3>
+                <p>Practicamos la caridad cristiana y promovemos la solidaridad con los más necesitados</p>
+            </div>
+            <div class="mission-card">
+                <div class="mission-icon">🌱</div>
+                <h3>Desarrollo Integral</h3>
+                <p>Promovemos el desarrollo humano integral en armonía con la creación</p>
+            </div>
+            <div class="mission-card">
+                <div class="mission-icon">⚖️</div>
+                <h3>Justicia Social</h3>
+                <p>Trabajamos por una sociedad más justa donde se respeten los derechos humanos</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicios">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <p class="section-subtitle">8 Ejes Estratégicos para el desarrollo comunitario y la transformación social</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>🌾 Seguridad Alimentaria</h3>
+                <p>Producción agropecuaria, hortalizas familiares y acceso a alimentos</p>
+            </div>
+            <div class="service-card">
+                <h3>💼 Economía Solidaria</h3>
+                <p>Microcréditos, emprendimientos y cooperativas de producción</p>
+            </div>
+            <div class="service-card">
+                <h3>🏥 Salud, Agua y Saneamiento</h3>
+                <p>Acceso a medicamentos, agua potable y educación en salud</p>
+            </div>
+            <div class="service-card">
+                <h3>🌳 Medio Ambiente</h3>
+                <p>Gestión de riesgo, recursos naturales y prevención de emergencias</p>
+            </div>
+            <div class="service-card">
+                <h3>🏠 Vivienda e Infraestructura</h3>
+                <p>Construcción y reconstrucción para familias vulnerables</p>
+            </div>
+            <div class="service-card">
+                <h3>🆘 Ayuda Humanitaria</h3>
+                <p>Asistencia en emergencias y situaciones de vulnerabilidad</p>
+            </div>
+            <div class="service-card">
+                <h3>📚 Educación</h3>
+                <p>Capacitación, liderazgo comunitario y formación en valores</p>
+            </div>
+            <div class="service-card">
+                <h3>⚡ Fortalecimiento Institucional</h3>
+                <p>Desarrollo organizacional y capacidad técnica</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact" id="impacto">
+        <h2 class="section-title">Nuestro Impacto</h2>
+        <p class="section-subtitle">Transformando vidas y comunidades a través del servicio</p>
+        <div class="impact-grid">
+            <div class="impact-item">
+                <div class="impact-number">21</div>
+                <div class="impact-text">Municipios Atendidos</div>
+            </div>
+            <div class="impact-item">
+                <div class="impact-number">385+</div>
+                <div class="impact-text">Comunidades Beneficiadas</div>
+            </div>
+            <div class="impact-item">
+                <div class="impact-number">Miles</div>
+                <div class="impact-text">Familias Apoyadas</div>
+            </div>
+            <div class="impact-item">
+                <div class="impact-number">55+</div>
+                <div class="impact-text">Años de Experiencia</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contacto">
+        <h2 class="section-title">Contáctanos</h2>
+        <p class="section-subtitle">¿Necesitas ayuda o deseas colaborar? Estamos aquí para servirte</p>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3 style="color: var(--primary-blue); margin-bottom: 1.5rem;">Información de Contacto</h3>
+                <div class="contact-item">
+                    <div class="contact-item-icon">📍</div>
+                    <div>
+                        <strong>Dirección</strong><br>
+                        Av. Alfredo Peralta Michell #6A<br>
+                        Sector La Lotería, La Vega
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">📞</div>
+                    <div>
+                        <strong>Teléfono</strong><br>
+                        <a href="tel:+18095731033">809-573-1033</a><br>
+                        <a href="tel:+18098680547">809-868-0547</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">✉️</div>
+                    <div>
+                        <strong>Email</strong><br>
+                        <a href="mailto:caritaslavega@yahoo.es">caritaslavega@yahoo.es</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">⏰</div>
+                    <div>
+                        <strong>Horario</strong><br>
+                        Lunes a Viernes: 8:00 AM - 5:00 PM
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3 style="color: var(--primary-blue); margin-bottom: 1.5rem;">Envíanos un Mensaje</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo *</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono *</label>
+                        <input type="tel" id="telefono" name="telefono" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="motivo">Motivo de Contacto *</label>
+                        <select id="motivo" name="motivo" required>
+                            <option value="">Seleccione una opción</option>
+                            <option value="solicitar-ayuda">Solicitar Ayuda</option>
+                            <option value="donar">Deseo Donar</option>
+                            <option value="voluntario">Ser Voluntario</option>
+                            <option value="informacion">Solicitar Información</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje *</label>
+                        <textarea id="mensaje" name="mensaje" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Cáritas La Vega</h3>
+                <p>Organismo de la Iglesia Católica de la Diócesis de La Vega, comprometido con la práctica de la caridad y la solidaridad.</p>
+                <p style="margin-top: 1rem;"><strong>RNC:</strong> 430-003824</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#mision">Nuestra Misión</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#impacto">Nuestro Impacto</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Áreas de Servicio</h3>
+                <ul>
+                    <li>La Vega</li>
+                    <li>Monseñor Nouel</li>
+                    <li>Hermanas Mirabal</li>
+                    <li>Sánchez Ramírez</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Valores</h3>
+                <ul>
+                    <li>✝ Fidelidad al Evangelio</li>
+                    <li>🤝 Caridad y Solidaridad</li>
+                    <li>⚖️ Justicia Social</li>
+                    <li>🌍 Defensa del Medio Ambiente</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Cáritas Diocesana La Vega. Todos los derechos reservados. | Fundada en 1969 por Mons. Juan Antonio Flores Santana</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/18098680547?text=Hola,%20necesito%20información%20sobre%20Cáritas%20La%20Vega" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+        💬
+    </a>
+
+    <script>
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                nombre: document.getElementById('nombre').value,
+                telefono: document.getElementById('telefono').value,
+                email: document.getElementById('email').value,
+                motivo: document.getElementById('motivo').value,
+                mensaje: document.getElementById('mensaje').value
+            };
+            
+            // Create WhatsApp message
+            const whatsappMessage = `Hola, soy ${formData.nombre}%0A%0AMotivo: ${formData.motivo}%0ATel: ${formData.telefono}%0AEmail: ${formData.email}%0A%0AMensaje: ${formData.mensaje}`;
+            
+            // Open WhatsApp
+            window.open(`https://wa.me/18098680547?text=${whatsappMessage}`, '_blank');
+            
+            // Reset form
+            this.reset();
+            alert('¡Gracias por contactarnos! Te redirigiremos a WhatsApp para completar tu solicitud.');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
