@@ -219,6 +219,156 @@
             margin-bottom: 1rem;
         }
 
+        /* Historia Section */
+        .historia {
+            padding: 4rem 1.5rem;
+            background: var(--white);
+        }
+
+        .historia-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .historia-timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .historia-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: var(--primary-red);
+            border: 4px solid var(--white);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--primary-blue);
+        }
+
+        .timeline-year {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .timeline-content {
+            background: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .timeline-content h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .timeline-content p {
+            color: var(--dark-gray);
+            line-height: 1.7;
+            margin-bottom: 0.8rem;
+        }
+
+        .timeline-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .historia-context {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+            color: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .historia-context h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .historia-context p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* Mission & Vision Updated Styles */
+        .mission-vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+        }
+
+        .mission-box, .vision-box {
+            background: var(--light-gray);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 3px solid var(--primary-blue);
+        }
+
+        .vision-box {
+            border-color: var(--primary-red);
+        }
+
+        .box-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .mission-box h3, .vision-box h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .vision-box h3 {
+            color: var(--primary-red);
+        }
+
+        .mission-box p, .vision-box p {
+            color: var(--dark-gray);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .valores-section {
+            margin-top: 3rem;
+        }
+
+        .mission-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
         /* Services Section */
         .services {
             padding: 4rem 1.5rem;
@@ -466,6 +616,38 @@
                 padding: 0.6rem 1.2rem;
                 font-size: 0.9rem;
             }
+
+            .historia-timeline {
+                padding-left: 1.5rem;
+            }
+
+            .historia-timeline::before {
+                left: 0;
+            }
+
+            .timeline-item::before {
+                left: -2rem;
+            }
+
+            .timeline-content {
+                padding: 1.2rem;
+            }
+
+            .timeline-content h3 {
+                font-size: 1.1rem;
+            }
+
+            .historia-context {
+                padding: 1.5rem;
+            }
+
+            .mission-vision-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .box-icon {
+                font-size: 2.5rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -520,8 +702,8 @@
             <h1>Construyendo Esperanza desde 1969</h1>
             <p>Trabajamos por el desarrollo humano integral y la justicia social en La Vega, Monseñor Nouel, Hermanas Mirabal y Sánchez Ramírez</p>
             <div class="hero-cta">
-                <a href="#servicios" class="btn btn-primary">Nuestros Servicios</a>
-                <a href="#contacto" class="btn btn-secondary">Solicitar Ayuda</a>
+                <a href="#historia" class="btn btn-primary">Nuestra Historia</a>
+                <a href="#servicios" class="btn btn-secondary">Nuestros Servicios</a>
             </div>
             <div class="hero-stats">
                 <div class="stat-box">
@@ -544,25 +726,98 @@
         </div>
     </section>
 
-    <!-- Mission Section -->
+    <!-- Historia Section -->
+    <section class="historia" id="historia">
+        <h2 class="section-title">Nuestra Historia</h2>
+        <p class="section-subtitle">Más de 55 años construyendo esperanza y transformando vidas</p>
+        <div class="historia-content">
+            <div class="historia-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1969</div>
+                    <div class="timeline-content">
+                        <h3>Fundación</h3>
+                        <p>El 19 de septiembre de 1969, Monseñor Juan Antonio Flores Santana, Obispo de La Vega (1966-1992), funda Cáritas Diocesana de La Vega. Desde sus inicios como Obispo, organizó la Pastoral Social, Cáritas Diocesana y el Centro de Promoción Campesina.</p>
+                        <p>El primer director fue el señor Vinicio Torres, quien junto a un equipo de personas la dirigió hasta 1984, surgiendo vinculada a los sectores campesinos y a la acción de promoción social de la iglesia.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1969-1984</div>
+                    <div class="timeline-content">
+                        <h3>Etapa Inicial: Asistencialismo</h3>
+                        <p>En esta primera etapa, Cáritas se caracterizó por promover las asociaciones campesinas y organizaciones vinculadas a la acción social de la iglesia. Se dió a conocer principalmente por los programas de alimentos y prendas de vestir, promoviendo trabajos comunitarios.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1984-2000</div>
+                    <div class="timeline-content">
+                        <h3>Promoción Humana y Desarrollo</h3>
+                        <p>Bajo la dirección del Sr. Antonio Basilio de la Cruz (1984-2011), se implementó un programa de capacitación basado en el documento de la Segunda Conferencia del Episcopado Latinoamericano en Puebla, México. Se promovieron Federaciones Campesinas y proyectos autogestionarios.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2001-2028</div>
+                    <div class="timeline-content">
+                        <h3>Fortalecimiento y Desarrollo Sostenible</h3>
+                        <p>Desde 2012, bajo la dirección del Ing. Franklin Mota López, se inicia un proceso de renovación institucional con mejor estructura, mayor capacidad técnica y planes estratégicos definidos. Una Cáritas moderna al servicio del desarrollo comunitario.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="historia-context">
+                <h3>Contexto de Fundación</h3>
+                <p>Cáritas surge en una época marcada por desarticulación social, desatención estatal, limitada labor pastoral, altos niveles de pobreza, escasos servicios básicos (agua potable, caminos vecinales, hospitales, escuelas, energía eléctrica), deficiente Reforma Agraria, presencia de grandes terratenientes, alta población campesina sin tierra, desempleo y analfabetismo.</p>
+                <p>Desde entonces, hemos trabajado incansablemente para transformar esta realidad, siempre fieles a nuestra fe y compromiso con los más necesitados.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
     <section class="mission" id="mision">
-        <h2 class="section-title">Nuestra Misión</h2>
-        <p class="section-subtitle">Organismo de la Iglesia Católica comprometido con la práctica de la caridad y la solidaridad a la luz del Evangelio</p>
-        <div class="mission-grid">
-            <div class="mission-card">
-                <div class="mission-icon">🤝</div>
-                <h3>Caridad y Solidaridad</h3>
-                <p>Practicamos la caridad cristiana y promovemos la solidaridad con los más necesitados</p>
+        <h2 class="section-title">Misión y Visión</h2>
+        <div class="mission-vision-grid">
+            <div class="mission-box">
+                <div class="box-icon">🎯</div>
+                <h3>Nuestra Misión</h3>
+                <p>Cáritas diocesana, organismo de la Iglesia Católica de la Diócesis de La Vega, comprometida con la práctica de la caridad y la solidaridad a la luz del Evangelio y la Doctrina Social de La Iglesia, promueve el desarrollo humano integral, la justicia social, el bienestar comunitario, en armonía con la creación, para hacer presente el Reino de Dios.</p>
             </div>
-            <div class="mission-card">
-                <div class="mission-icon">🌱</div>
-                <h3>Desarrollo Integral</h3>
-                <p>Promovemos el desarrollo humano integral en armonía con la creación</p>
+            <div class="vision-box">
+                <div class="box-icon">🌟</div>
+                <h3>Nuestra Visión</h3>
+                <p>Cáritas diocesana, comprometida con la práctica de la caridad, la solidaridad y la opción preferencial por los pobres, trabaja y propugna por una sociedad más justa donde la dignidad y los derechos humanos sean reconocidos, respetados y practicados a favor de los más débiles y empobrecidos.</p>
             </div>
-            <div class="mission-card">
-                <div class="mission-icon">⚖️</div>
-                <h3>Justicia Social</h3>
-                <p>Trabajamos por una sociedad más justa donde se respeten los derechos humanos</p>
+        </div>
+        <div class="valores-section">
+            <h3 class="section-title" style="font-size: 1.5rem; margin-top: 3rem; margin-bottom: 2rem;">Nuestros Valores</h3>
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="mission-icon">✝️</div>
+                    <h3>Fidelidad al Evangelio</h3>
+                    <p>Guiados por la Doctrina Social de la Iglesia en todas nuestras acciones</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">🤝</div>
+                    <h3>Caridad y Solidaridad</h3>
+                    <p>Practicamos la caridad cristiana y promovemos la solidaridad con los más necesitados</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">⚖️</div>
+                    <h3>Justicia Social</h3>
+                    <p>Compromiso con la dignidad, desarrollo y derechos humanos</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">🌍</div>
+                    <h3>Defensa del Medio Ambiente</h3>
+                    <p>Trabajamos en armonía con la creación y los recursos naturales</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">💎</div>
+                    <h3>Transparencia</h3>
+                    <p>Gestión honesta y clara de todos nuestros recursos y acciones</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">🕊️</div>
+                    <h3>Libertad, Justicia y Paz</h3>
+                    <p>Promovemos una convivencia basada en estos principios fundamentales</p>
+                </div>
             </div>
         </div>
     </section>
@@ -658,7 +913,7 @@
                     <div class="contact-item-icon">✉️</div>
                     <div>
                         <strong>Email</strong><br>
-                        <a href="mailto:caritaslavega@yahoo.es">caritaslavega@yahoo.es</a>
+                        <a href="/cdn-cgi/l/email-protection#284b495a415c495b44495e4d4f49685149404747064d5b"><span class="__cf_email__" data-cfemail="741715061d001507181502111315340d151c1b1b5a1107">[email&#160;protected]</span></a>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -717,7 +972,8 @@
             <div class="footer-section">
                 <h3>Enlaces Rápidos</h3>
                 <ul>
-                    <li><a href="#mision">Nuestra Misión</a></li>
+                    <li><a href="#historia">Nuestra Historia</a></li>
+                    <li><a href="#mision">Misión y Visión</a></li>
                     <li><a href="#servicios">Servicios</a></li>
                     <li><a href="#impacto">Nuestro Impacto</a></li>
                     <li><a href="#contacto">Contacto</a></li>
@@ -752,7 +1008,7 @@
         💬
     </a>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Form submission handler
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -781,14 +1037,3 @@
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
-</body>
-</html>
