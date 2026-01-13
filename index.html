@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cáritas La Vega - Dignidad, Desarrollo y Justicia Social</title>
-    <meta name="description" content="Cáritas Diocesana La Vega - Trabajando por el desarrollo humano integral y la justicia social desde 1969">
+    <title>FumiCleaner - Control de Plagas & Limpieza Profesional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,658 +15,164 @@
         }
 
         :root {
-            --primary-blue: #1e3a8a;
-            --primary-red: #dc2626;
-            --light-blue: #3b82f6;
-            --gold: #f59e0b;
-            --dark-gray: #1f2937;
-            --light-gray: #f3f4f6;
-            --white: #ffffff;
+            --primary: #00A9E0;
+            --secondary: #0088CC;
+            --accent: #FF8C00;
+            --dark: #1A1A1A;
+            --light: #F5FBFF;
+            --shadow: rgba(0, 169, 224, 0.15);
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'DM Sans', sans-serif;
+            color: var(--dark);
             line-height: 1.6;
-            color: var(--dark-gray);
             overflow-x: hidden;
+            background: var(--light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
 
         /* Header */
         header {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
-            color: var(--white);
-            padding: 1rem 0;
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 169, 224, 0.1);
+            box-shadow: 0 2px 20px rgba(0, 169, 224, 0.08);
+            animation: slideDown 0.5s ease-out;
         }
 
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+            padding: 16px 0;
         }
 
-        .logo-section {
+        .logo-container {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 12px;
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            text-decoration: none;
-            color: var(--white);
-        }
-
-        .tagline {
-            font-size: 0.85rem;
-            opacity: 0.95;
-            max-width: 200px;
-        }
-
-        .header-cta {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
             display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
+            flex-direction: column;
+            line-height: 0.9;
         }
 
-        .btn {
-            padding: 0.7rem 1.5rem;
-            border-radius: 50px;
+        .logo .cleaner {
+            color: var(--primary);
+            font-size: 20px;
+        }
+
+        .logo .fumi {
+            color: var(--accent);
+            font-size: 28px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-            text-align: center;
-            border: none;
-            cursor: pointer;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
         }
 
-        .btn-primary {
-            background: var(--primary-red);
-            color: var(--white);
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
         }
 
-        .btn-primary:hover {
-            background: #b91c1c;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+        .nav-links a:hover {
+            color: var(--primary);
         }
 
-        .btn-secondary {
-            background: var(--white);
-            color: var(--primary-blue);
-        }
-
-        .btn-secondary:hover {
-            background: var(--light-gray);
-            transform: translateY(-2px);
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(59, 130, 246, 0.9) 100%),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%231e3a8a" width="1200" height="600"/><path fill="%233b82f6" opacity="0.1" d="M0,200 Q300,100 600,200 T1200,200 L1200,600 L0,600 Z"/></svg>');
-            background-size: cover;
-            background-position: center;
-            color: var(--white);
-            padding: 4rem 1.5rem;
-            text-align: center;
+            margin-top: 80px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #00A9E0 0%, #0088CC 50%, #006BA6 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -15%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(255, 140, 0, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 140, 0, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-50px, -50px) rotate(180deg); }
         }
 
         .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .stat-box {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem;
-            border-radius: 15px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--gold);
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-        }
-
-        /* Mission Section */
-        .mission {
-            padding: 4rem 1.5rem;
-            background: var(--white);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: #6b7280;
-            margin-bottom: 3rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .mission-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .mission-card {
-            background: var(--light-gray);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .mission-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .mission-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .mission-card h3 {
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
-        }
-
-        /* Historia Section */
-        .historia {
-            padding: 4rem 1.5rem;
-            background: var(--white);
-        }
-
-        .historia-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .historia-timeline {
             position: relative;
-            padding-left: 2rem;
-            margin-bottom: 3rem;
+            z-index: 2;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
         }
 
-        .historia-timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(180deg, var(--primary-blue) 0%, var(--light-blue) 100%);
-            border-radius: 2px;
-        }
-
-        .timeline-item {
-            margin-bottom: 2.5rem;
-            position: relative;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2.5rem;
-            top: 0;
-            width: 16px;
-            height: 16px;
-            background: var(--primary-red);
-            border: 4px solid var(--white);
-            border-radius: 50%;
-            box-shadow: 0 0 0 4px var(--primary-blue);
-        }
-
-        .timeline-year {
-            display: inline-block;
-            background: var(--gold);
-            color: var(--white);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
-
-        .timeline-content {
-            background: var(--light-gray);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border-left: 4px solid var(--primary-blue);
-        }
-
-        .timeline-content h3 {
-            color: var(--primary-blue);
-            margin-bottom: 0.8rem;
-            font-size: 1.3rem;
-        }
-
-        .timeline-content p {
-            color: var(--dark-gray);
-            line-height: 1.7;
-            margin-bottom: 0.8rem;
-        }
-
-        .timeline-content p:last-child {
-            margin-bottom: 0;
-        }
-
-        .historia-context {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
-            color: var(--white);
-            padding: 2.5rem;
-            border-radius: 15px;
-            margin-top: 2rem;
-        }
-
-        .historia-context h3 {
-            color: var(--gold);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .historia-context p {
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        /* Mission & Vision Updated Styles */
-        .mission-vision-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto 2rem;
-        }
-
-        .mission-box, .vision-box {
-            background: var(--light-gray);
-            padding: 2.5rem;
-            border-radius: 15px;
-            text-align: center;
-            border: 3px solid var(--primary-blue);
-        }
-
-        .vision-box {
-            border-color: var(--primary-red);
-        }
-
-        .box-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .mission-box h3, .vision-box h3 {
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .vision-box h3 {
-            color: var(--primary-red);
-        }
-
-        .mission-box p, .vision-box p {
-            color: var(--dark-gray);
-            line-height: 1.8;
-            font-size: 1rem;
-        }
-
-        .valores-section {
-            margin-top: 3rem;
-        }
-
-        .mission-card h3 {
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
-        }
-
-        /* Services Section */
-        .services {
-            padding: 4rem 1.5rem;
-            background: var(--light-gray);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .service-card {
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border-left: 4px solid var(--primary-red);
-            transition: all 0.3s ease;
-        }
-
-        .service-card:hover {
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            transform: translateX(5px);
-        }
-
-        .service-card h3 {
-            color: var(--primary-blue);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .service-card p {
-            color: #6b7280;
-            font-size: 0.95rem;
-        }
-
-        /* Impact Section */
-        .impact {
-            padding: 4rem 1.5rem;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
-            color: var(--white);
-        }
-
-        .impact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 2rem auto;
-        }
-
-        .impact-item {
-            text-align: center;
-            padding: 2rem 1rem;
-        }
-
-        .impact-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--gold);
-            margin-bottom: 0.5rem;
-        }
-
-        .impact-text {
-            font-size: 1rem;
-        }
-
-        /* Contact Form Section */
-        .contact {
-            padding: 4rem 1.5rem;
-            background: var(--white);
-        }
-
-        .contact-container {
-            max-width: 800px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-        }
-
-        .contact-info {
-            background: var(--light-gray);
-            padding: 2rem;
-            border-radius: 15px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: start;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-item-icon {
-            font-size: 1.5rem;
-            color: var(--primary-red);
-            min-width: 30px;
-        }
-
-        .contact-form {
-            background: var(--light-gray);
-            padding: 2rem;
-            border-radius: 15px;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--dark-gray);
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--primary-blue);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark-gray);
-            color: var(--white);
-            padding: 3rem 1.5rem 1rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            color: var(--gold);
-            margin-bottom: 1rem;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-section a {
-            color: var(--white);
-            text-decoration: none;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-        }
-
-        .footer-section a:hover {
-            opacity: 1;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        /* WhatsApp Floating Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #25d366;
-            color: var(--white);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.5);
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            z-index: 1000;
-            text-decoration: none;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 1.6rem;
-            }
-
-            .header-content {
-                justify-content: center;
-                text-align: center;
-            }
-
-            .logo-section {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-
-            .btn {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.9rem;
-            }
-
-            .historia-timeline {
-                padding-left: 1.5rem;
-            }
-
-            .historia-timeline::before {
-                left: 0;
-            }
-
-            .timeline-item::before {
-                left: -2rem;
-            }
-
-            .timeline-content {
-                padding: 1.2rem;
-            }
-
-            .timeline-content h3 {
-                font-size: 1.1rem;
-            }
-
-            .historia-context {
-                padding: 1.5rem;
-            }
-
-            .mission-vision-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .box-icon {
-                font-size: 2.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-                bottom: 15px;
-                right: 15px;
-            }
-        }
-
-        /* Animation */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -676,364 +184,759 @@
             }
         }
 
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out;
+        .hero h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(42px, 6vw, 72px);
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+            display: block;
+        }
+
+        .hero p {
+            font-size: clamp(18px, 2vw, 22px);
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 40px;
+            max-width: 600px;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .btn {
+            padding: 16px 40px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-family: 'DM Sans', sans-serif;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 8px 24px rgba(255, 140, 0, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(255, 140, 0, 0.5);
+            background: #FF9900;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 120px 0;
+            background: var(--light);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 8px 24px;
+            background: rgba(0, 169, 224, 0.15);
+            color: var(--primary);
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(36px, 5vw, 56px);
+            color: var(--primary);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .section-description {
+            font-size: 20px;
+            color: rgba(26, 26, 26, 0.7);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 48px 36px;
+            border-radius: 24px;
+            box-shadow: 0 4px 24px var(--shadow);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.4s;
+            transform-origin: left;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px var(--shadow);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 48px;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .service-card p {
+            color: rgba(26, 26, 26, 0.7);
+            line-height: 1.7;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 120px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefits::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 140, 0, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .benefit-item {
+            text-align: center;
+        }
+
+        .benefit-number {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 56px;
+            color: var(--accent);
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .benefit-item h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .benefit-item p {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 120px 0;
+            background: var(--light);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .step {
+            background: white;
+            padding: 40px 32px;
+            border-radius: 20px;
+            position: relative;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .step:hover {
+            border-color: var(--primary);
+            transform: scale(1.02);
+            box-shadow: 0 8px 32px var(--shadow);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 32px;
+            width: 48px;
+            height: 48px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            color: white;
+            box-shadow: 0 4px 16px rgba(255, 140, 0, 0.3);
+        }
+
+        .step h3 {
+            font-size: 22px;
+            color: var(--primary);
+            margin-bottom: 12px;
+            margin-top: 20px;
+        }
+
+        .step p {
+            color: rgba(26, 26, 26, 0.7);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--accent) 0%, #FF9900 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 169, 224, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-section h2 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(32px, 5vw, 48px);
+            color: white;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: 'DM Sans', sans-serif;
+            background: rgba(255, 255, 255, 0.95);
+            transition: all 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form .btn-primary {
+            background: var(--primary);
+            box-shadow: 0 8px 24px rgba(0, 169, 224, 0.4);
+        }
+
+        .contact-form .btn-primary:hover {
+            background: var(--secondary);
+            box-shadow: 0 12px 32px rgba(0, 169, 224, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-section h3 {
+            color: white;
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            line-height: 2;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .footer-logo {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 24px;
+            margin-bottom: 16px;
+            display: flex;
+            flex-direction: column;
+            line-height: 0.9;
+        }
+
+        .footer-logo .cleaner {
+            color: var(--primary);
+        }
+
+        .footer-logo .fumi {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 92px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 92px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.3s;
+                gap: 24px;
+                box-shadow: 0 4px 20px rgba(0, 169, 224, 0.1);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                min-height: 80vh;
+                padding: 40px 0;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Animations on scroll */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div class="header-content">
-            <div class="logo-section">
-                <a href="#" class="logo">✝ Cáritas La Vega</a>
-                <p class="tagline">Dignidad, Desarrollo y Justicia Social</p>
+        <nav class="container">
+            <div class="logo-container">
+                <div class="logo">
+                    <span class="cleaner">cleaner</span>
+                    <span class="fumi">FUMI</span>
+                </div>
             </div>
-            <div class="header-cta">
-                <a href="#contacto" class="btn btn-primary">Contáctanos</a>
-                <a href="#donar" class="btn btn-secondary">Cómo Ayudar</a>
-            </div>
-        </div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#beneficios">Beneficios</a></li>
+                <li><a href="#proceso">Proceso</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero fade-in-up">
-        <div class="hero-content">
-            <h1>Construyendo Esperanza desde 1969</h1>
-            <p>Trabajamos por el desarrollo humano integral y la justicia social en La Vega, Monseñor Nouel, Hermanas Mirabal y Sánchez Ramírez</p>
-            <div class="hero-cta">
-                <a href="#historia" class="btn btn-primary">Nuestra Historia</a>
-                <a href="#servicios" class="btn btn-secondary">Nuestros Servicios</a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat-box">
-                    <div class="stat-number">55+</div>
-                    <div class="stat-label">Años de Servicio</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number">4</div>
-                    <div class="stat-label">Provincias</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number">61</div>
-                    <div class="stat-label">Parroquias</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number">385+</div>
-                    <div class="stat-label">Comunidades</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Historia Section -->
-    <section class="historia" id="historia">
-        <h2 class="section-title">Nuestra Historia</h2>
-        <p class="section-subtitle">Más de 55 años construyendo esperanza y transformando vidas</p>
-        <div class="historia-content">
-            <div class="historia-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-year">1969</div>
-                    <div class="timeline-content">
-                        <h3>Fundación</h3>
-                        <p>El 19 de septiembre de 1969, Monseñor Juan Antonio Flores Santana, Obispo de La Vega (1966-1992), funda Cáritas Diocesana de La Vega. Desde sus inicios como Obispo, organizó la Pastoral Social, Cáritas Diocesana y el Centro de Promoción Campesina.</p>
-                        <p>El primer director fue el señor Vinicio Torres, quien junto a un equipo de personas la dirigió hasta 1984, surgiendo vinculada a los sectores campesinos y a la acción de promoción social de la iglesia.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">1969-1984</div>
-                    <div class="timeline-content">
-                        <h3>Etapa Inicial: Asistencialismo</h3>
-                        <p>En esta primera etapa, Cáritas se caracterizó por promover las asociaciones campesinas y organizaciones vinculadas a la acción social de la iglesia. Se dió a conocer principalmente por los programas de alimentos y prendas de vestir, promoviendo trabajos comunitarios.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">1984-2000</div>
-                    <div class="timeline-content">
-                        <h3>Promoción Humana y Desarrollo</h3>
-                        <p>Bajo la dirección del Sr. Antonio Basilio de la Cruz (1984-2011), se implementó un programa de capacitación basado en el documento de la Segunda Conferencia del Episcopado Latinoamericano en Puebla, México. Se promovieron Federaciones Campesinas y proyectos autogestionarios.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2001-2028</div>
-                    <div class="timeline-content">
-                        <h3>Fortalecimiento y Desarrollo Sostenible</h3>
-                        <p>Desde 2012, bajo la dirección del Ing. Franklin Mota López, se inicia un proceso de renovación institucional con mejor estructura, mayor capacidad técnica y planes estratégicos definidos. Una Cáritas moderna al servicio del desarrollo comunitario.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="historia-context">
-                <h3>Contexto de Fundación</h3>
-                <p>Cáritas surge en una época marcada por desarticulación social, desatención estatal, limitada labor pastoral, altos niveles de pobreza, escasos servicios básicos (agua potable, caminos vecinales, hospitales, escuelas, energía eléctrica), deficiente Reforma Agraria, presencia de grandes terratenientes, alta población campesina sin tierra, desempleo y analfabetismo.</p>
-                <p>Desde entonces, hemos trabajado incansablemente para transformar esta realidad, siempre fieles a nuestra fe y compromiso con los más necesitados.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mission & Vision Section -->
-    <section class="mission" id="mision">
-        <h2 class="section-title">Misión y Visión</h2>
-        <div class="mission-vision-grid">
-            <div class="mission-box">
-                <div class="box-icon">🎯</div>
-                <h3>Nuestra Misión</h3>
-                <p>Cáritas diocesana, organismo de la Iglesia Católica de la Diócesis de La Vega, comprometida con la práctica de la caridad y la solidaridad a la luz del Evangelio y la Doctrina Social de La Iglesia, promueve el desarrollo humano integral, la justicia social, el bienestar comunitario, en armonía con la creación, para hacer presente el Reino de Dios.</p>
-            </div>
-            <div class="vision-box">
-                <div class="box-icon">🌟</div>
-                <h3>Nuestra Visión</h3>
-                <p>Cáritas diocesana, comprometida con la práctica de la caridad, la solidaridad y la opción preferencial por los pobres, trabaja y propugna por una sociedad más justa donde la dignidad y los derechos humanos sean reconocidos, respetados y practicados a favor de los más débiles y empobrecidos.</p>
-            </div>
-        </div>
-        <div class="valores-section">
-            <h3 class="section-title" style="font-size: 1.5rem; margin-top: 3rem; margin-bottom: 2rem;">Nuestros Valores</h3>
-            <div class="mission-grid">
-                <div class="mission-card">
-                    <div class="mission-icon">✝️</div>
-                    <h3>Fidelidad al Evangelio</h3>
-                    <p>Guiados por la Doctrina Social de la Iglesia en todas nuestras acciones</p>
-                </div>
-                <div class="mission-card">
-                    <div class="mission-icon">🤝</div>
-                    <h3>Caridad y Solidaridad</h3>
-                    <p>Practicamos la caridad cristiana y promovemos la solidaridad con los más necesitados</p>
-                </div>
-                <div class="mission-card">
-                    <div class="mission-icon">⚖️</div>
-                    <h3>Justicia Social</h3>
-                    <p>Compromiso con la dignidad, desarrollo y derechos humanos</p>
-                </div>
-                <div class="mission-card">
-                    <div class="mission-icon">🌍</div>
-                    <h3>Defensa del Medio Ambiente</h3>
-                    <p>Trabajamos en armonía con la creación y los recursos naturales</p>
-                </div>
-                <div class="mission-card">
-                    <div class="mission-icon">💎</div>
-                    <h3>Transparencia</h3>
-                    <p>Gestión honesta y clara de todos nuestros recursos y acciones</p>
-                </div>
-                <div class="mission-card">
-                    <div class="mission-icon">🕊️</div>
-                    <h3>Libertad, Justicia y Paz</h3>
-                    <p>Promovemos una convivencia basada en estos principios fundamentales</p>
-                </div>
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Control de Plagas <span>& Limpieza Profesional</span></h1>
+            <p>Servicios profesionales de fumigación y control de plagas. Garantizamos ambientes limpios, seguros y libres de insectos para tu familia y negocio.</p>
+            <div class="cta-buttons">
+                <a href="#contacto" class="btn btn-primary">Solicitar Servicio</a>
+                <a href="#servicios" class="btn btn-secondary">Ver Servicios</a>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
     <section class="services" id="servicios">
-        <h2 class="section-title">Nuestros Servicios</h2>
-        <p class="section-subtitle">8 Ejes Estratégicos para el desarrollo comunitario y la transformación social</p>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>🌾 Seguridad Alimentaria</h3>
-                <p>Producción agropecuaria, hortalizas familiares y acceso a alimentos</p>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Nuestros Servicios</span>
+                <h2 class="section-title">Soluciones Completas de Fumigación</h2>
+                <p class="section-description">Ofrecemos servicios especializados adaptados a tus necesidades específicas, con productos certificados y técnicas avanzadas.</p>
             </div>
-            <div class="service-card">
-                <h3>💼 Economía Solidaria</h3>
-                <p>Microcréditos, emprendimientos y cooperativas de producción</p>
-            </div>
-            <div class="service-card">
-                <h3>🏥 Salud, Agua y Saneamiento</h3>
-                <p>Acceso a medicamentos, agua potable y educación en salud</p>
-            </div>
-            <div class="service-card">
-                <h3>🌳 Medio Ambiente</h3>
-                <p>Gestión de riesgo, recursos naturales y prevención de emergencias</p>
-            </div>
-            <div class="service-card">
-                <h3>🏠 Vivienda e Infraestructura</h3>
-                <p>Construcción y reconstrucción para familias vulnerables</p>
-            </div>
-            <div class="service-card">
-                <h3>🆘 Ayuda Humanitaria</h3>
-                <p>Asistencia en emergencias y situaciones de vulnerabilidad</p>
-            </div>
-            <div class="service-card">
-                <h3>📚 Educación</h3>
-                <p>Capacitación, liderazgo comunitario y formación en valores</p>
-            </div>
-            <div class="service-card">
-                <h3>⚡ Fortalecimiento Institucional</h3>
-                <p>Desarrollo organizacional y capacidad técnica</p>
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll">
+                    <span class="service-icon">🏠</span>
+                    <h3>Fumigación Residencial</h3>
+                    <p>Protección integral para tu hogar contra cucarachas, hormigas, mosquitos y otras plagas comunes. Productos seguros para tu familia y mascotas.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <span class="service-icon">🏢</span>
+                    <h3>Fumigación Comercial</h3>
+                    <p>Soluciones empresariales para oficinas, restaurantes, hoteles y comercios. Cumplimos con todas las normativas sanitarias vigentes.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <span class="service-icon">🦟</span>
+                    <h3>Control de Mosquitos</h3>
+                    <p>Tratamientos especializados contra mosquitos vectores de enfermedades. Protección efectiva para áreas exteriores y jardines.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <span class="service-icon">🐭</span>
+                    <h3>Control de Roedores</h3>
+                    <p>Sistemas avanzados de control y prevención de ratas y ratones. Soluciones permanentes con seguimiento continuo.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <span class="service-icon">🪳</span>
+                    <h3>Desinsectación</h3>
+                    <p>Eliminación profesional de todo tipo de insectos rastreros y voladores con garantía de efectividad.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <span class="service-icon">✨</span>
+                    <h3>Limpieza Profesional</h3>
+                    <p>Servicios de limpieza profunda y desinfección de espacios residenciales y comerciales con productos de alta calidad.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Impact Section -->
-    <section class="impact" id="impacto">
-        <h2 class="section-title">Nuestro Impacto</h2>
-        <p class="section-subtitle">Transformando vidas y comunidades a través del servicio</p>
-        <div class="impact-grid">
-            <div class="impact-item">
-                <div class="impact-number">21</div>
-                <div class="impact-text">Municipios Atendidos</div>
+    <!-- Benefits Section -->
+    <section class="benefits" id="beneficios">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="background: rgba(255, 140, 0, 0.2); color: var(--accent);">¿Por Qué Elegirnos?</span>
+                <h2 class="section-title" style="color: white;">La Confianza de Miles de Clientes</h2>
             </div>
-            <div class="impact-item">
-                <div class="impact-number">385+</div>
-                <div class="impact-text">Comunidades Beneficiadas</div>
-            </div>
-            <div class="impact-item">
-                <div class="impact-number">Miles</div>
-                <div class="impact-text">Familias Apoyadas</div>
-            </div>
-            <div class="impact-item">
-                <div class="impact-number">55+</div>
-                <div class="impact-text">Años de Experiencia</div>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <span class="benefit-number">15+</span>
+                    <h3>Años de Experiencia</h3>
+                    <p>Más de una década brindando servicios de calidad y confianza en el sector.</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-number">5000+</span>
+                    <h3>Clientes Satisfechos</h3>
+                    <p>Miles de hogares y empresas confían en nosotros para su tranquilidad.</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-number">100%</span>
+                    <h3>Productos Certificados</h3>
+                    <p>Utilizamos solo productos aprobados por las autoridades sanitarias.</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-number">24/7</span>
+                    <h3>Atención Disponible</h3>
+                    <p>Estamos disponibles para emergencias en cualquier momento del día.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contacto">
-        <h2 class="section-title">Contáctanos</h2>
-        <p class="section-subtitle">¿Necesitas ayuda o deseas colaborar? Estamos aquí para servirte</p>
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3 style="color: var(--primary-blue); margin-bottom: 1.5rem;">Información de Contacto</h3>
-                <div class="contact-item">
-                    <div class="contact-item-icon">📍</div>
-                    <div>
-                        <strong>Dirección</strong><br>
-                        Av. Alfredo Peralta Michell #6A<br>
-                        Sector La Lotería, La Vega
-                    </div>
+    <!-- Process Section -->
+    <section class="process" id="proceso">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Nuestro Proceso</span>
+                <h2 class="section-title">Cómo Trabajamos</h2>
+                <p class="section-description">Un proceso simple y eficiente diseñado para brindarte la mejor experiencia y resultados garantizados.</p>
+            </div>
+            <div class="process-steps">
+                <div class="step animate-on-scroll">
+                    <div class="step-number">1</div>
+                    <h3>Inspección Inicial</h3>
+                    <p>Realizamos una evaluación completa de tu propiedad para identificar el tipo y nivel de infestación o necesidades de limpieza.</p>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-item-icon">📞</div>
-                    <div>
-                        <strong>Teléfono</strong><br>
-                        <a href="tel:+18095731033">809-573-1033</a><br>
-                        <a href="tel:+18098680547">809-868-0547</a>
-                    </div>
+                <div class="step animate-on-scroll">
+                    <div class="step-number">2</div>
+                    <h3>Plan Personalizado</h3>
+                    <p>Diseñamos un tratamiento específico adaptado a tus necesidades y al tipo de servicio requerido.</p>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-item-icon">✉️</div>
-                    <div>
-                        <strong>Email</strong><br>
-                        <a href="/cdn-cgi/l/email-protection#284b495a415c495b44495e4d4f49685149404747064d5b"><span class="__cf_email__" data-cfemail="741715061d001507181502111315340d151c1b1b5a1107">[email&#160;protected]</span></a>
-                    </div>
+                <div class="step animate-on-scroll">
+                    <div class="step-number">3</div>
+                    <h3>Aplicación Profesional</h3>
+                    <p>Nuestros técnicos certificados ejecutan el tratamiento o limpieza con equipos de última generación.</p>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-item-icon">⏰</div>
-                    <div>
-                        <strong>Horario</strong><br>
-                        Lunes a Viernes: 8:00 AM - 5:00 PM
-                    </div>
+                <div class="step animate-on-scroll">
+                    <div class="step-number">4</div>
+                    <h3>Seguimiento y Garantía</h3>
+                    <p>Monitoreamos los resultados y ofrecemos garantía en todos nuestros servicios aplicados.</p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="contact-form">
-                <h3 style="color: var(--primary-blue); margin-bottom: 1.5rem;">Envíanos un Mensaje</h3>
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="nombre">Nombre Completo *</label>
-                        <input type="text" id="nombre" name="nombre" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="telefono">Teléfono *</label>
-                        <input type="tel" id="telefono" name="telefono" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Correo Electrónico</label>
-                        <input type="email" id="email" name="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="motivo">Motivo de Contacto *</label>
-                        <select id="motivo" name="motivo" required>
-                            <option value="">Seleccione una opción</option>
-                            <option value="solicitar-ayuda">Solicitar Ayuda</option>
-                            <option value="donar">Deseo Donar</option>
-                            <option value="voluntario">Ser Voluntario</option>
-                            <option value="informacion">Solicitar Información</option>
-                            <option value="otro">Otro</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="mensaje">Mensaje *</label>
-                        <textarea id="mensaje" name="mensaje" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Mensaje</button>
-                </form>
-            </div>
+    <!-- CTA Section -->
+    <section class="cta-section" id="contacto">
+        <div class="container cta-content">
+            <h2>¿Listo para un Ambiente Limpio y Libre de Plagas?</h2>
+            <p>Contáctanos hoy y recibe una cotización gratuita. Nuestro equipo está listo para ayudarte.</p>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <input type="text" placeholder="Tu nombre completo" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Tu teléfono" required>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Cuéntanos sobre tu problema con plagas o necesidades de limpieza" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Solicitar Cotización Gratis</button>
+            </form>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Cáritas La Vega</h3>
-                <p>Organismo de la Iglesia Católica de la Diócesis de La Vega, comprometido con la práctica de la caridad y la solidaridad.</p>
-                <p style="margin-top: 1rem;"><strong>RNC:</strong> 430-003824</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <span class="cleaner">cleaner</span>
+                        <span class="fumi">FUMI</span>
+                    </div>
+                    <p style="margin-top: 16px;">Tu aliado confiable en el control profesional de plagas y limpieza. Protegiendo hogares y negocios con excelencia.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Servicios</h3>
+                    <p><a href="#servicios">Fumigación Residencial</a></p>
+                    <p><a href="#servicios">Fumigación Comercial</a></p>
+                    <p><a href="#servicios">Control de Roedores</a></p>
+                    <p><a href="#servicios">Limpieza Profesional</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>📞 +1 (809) 555-0123</p>
+                    <p>📧 info@fumicleaner.com</p>
+                    <p>📍 Santo Domingo, República Dominicana</p>
+                    <p>🕒 Lun - Sáb: 8:00 AM - 6:00 PM</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Certificaciones</h3>
+                    <p>✓ Certificado Sanitario MSP</p>
+                    <p>✓ ISO 9001:2015</p>
+                    <p>✓ Productos Eco-Friendly</p>
+                    <p>✓ Personal Capacitado</p>
+                </div>
             </div>
-            <div class="footer-section">
-                <h3>Enlaces Rápidos</h3>
-                <ul>
-                    <li><a href="#historia">Nuestra Historia</a></li>
-                    <li><a href="#mision">Misión y Visión</a></li>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#impacto">Nuestro Impacto</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
+            <div class="footer-bottom">
+                <p>&copy; 2026 FumiCleaner. Todos los derechos reservados. | Control de Plagas & Limpieza Profesional</p>
             </div>
-            <div class="footer-section">
-                <h3>Áreas de Servicio</h3>
-                <ul>
-                    <li>La Vega</li>
-                    <li>Monseñor Nouel</li>
-                    <li>Hermanas Mirabal</li>
-                    <li>Sánchez Ramírez</li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Valores</h3>
-                <ul>
-                    <li>✝ Fidelidad al Evangelio</li>
-                    <li>🤝 Caridad y Solidaridad</li>
-                    <li>⚖️ Justicia Social</li>
-                    <li>🌍 Defensa del Medio Ambiente</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Cáritas Diocesana La Vega. Todos los derechos reservados. | Fundada en 1969 por Mons. Juan Antonio Flores Santana</p>
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/18098680547?text=Hola,%20necesito%20información%20sobre%20Cáritas%20La%20Vega" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
-        💬
-    </a>
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Form submission handler
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = {
-                nombre: document.getElementById('nombre').value,
-                telefono: document.getElementById('telefono').value,
-                email: document.getElementById('email').value,
-                motivo: document.getElementById('motivo').value,
-                mensaje: document.getElementById('mensaje').value
-            };
-            
-            // Create WhatsApp message
-            const whatsappMessage = `Hola, soy ${formData.nombre}%0A%0AMotivo: ${formData.motivo}%0ATel: ${formData.telefono}%0AEmail: ${formData.email}%0A%0AMensaje: ${formData.mensaje}`;
-            
-            // Open WhatsApp
-            window.open(`https://wa.me/18098680547?text=${whatsappMessage}`, '_blank');
-            
-            // Reset form
-            this.reset();
-            alert('¡Gracias por contactarnos! Te redirigiremos a WhatsApp para completar tu solicitud.');
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
         });
 
-        // Smooth scrolling for anchor links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('¡Gracias por tu interés! Te contactaremos pronto para agendar tu inspección gratuita.');
+            event.target.reset();
+        }
+
+        // Add parallax effect to hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
+        // Header shadow on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 20px rgba(0, 169, 224, 0.15)';
+            } else {
+                header.style.boxShadow = '0 2px 20px rgba(0, 169, 224, 0.08)';
+            }
+        });
+    </script>
+</body>
+</html>
